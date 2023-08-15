@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flag Hosting</title>
+</head>
+<body>
+  <h1>Flag Hosting</h1>
+  <input type="file" id="flagInput" accept="image/*">
+  <button id="hostButton">Host Flag</button>
+  <div id="flagContainer"></div>
+
+  <script>
+    const flagInput = document.getElementById('flagInput');
+    const hostButton = document.getElementById('hostButton');
+    const flagContainer = document.getElementById('flagContainer');
+
+    hostButton.addEventListener('click', () => {
+      const file = flagInput.files[0];
+      
+      if (file) {
+        const imageUrl = URL.createObjectURL(file);
+        const flagImage = document.createElement('img');
+        flagImage.src = imageUrl;
+        
+        flagContainer.innerHTML = ''; // Clear previous image
+        flagContainer.appendChild(flagImage);
+        
+        // Optionally, you can also send the image to a server for hosting.
+        // This is just a client-side example.
+      }
+    });
+  </script>
+</body>
+</html>
