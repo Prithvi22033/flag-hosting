@@ -1,34 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Flag Hosting</title>
+  <title>Indian Flag Animation</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #flag {
+      width: 300px;
+      height: 200px;
+      background-color: #ff9933; /* Saffron color */
+      position: relative;
+      animation: wave 2s infinite;
+    }
+
+    #flag .stripe {
+      width: 100%;
+      height: 40px;
+      position: absolute;
+    }
+
+    #flag .stripe:nth-child(1) {
+      top: 0;
+      background-color: #ff9933; /* Saffron color */
+    }
+
+    #flag .stripe:nth-child(2) {
+      top: 40px;
+      background-color: white;
+    }
+
+    #flag .stripe:nth-child(3) {
+      top: 80px;
+      background-color: #128807; /* Green color */
+    }
+
+    @keyframes wave {
+      0%, 100% {
+        left: 0;
+      }
+      50% {
+        left: 50px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Flag Hosting</h1>
-  <input type="file" id="flagInput" accept="image/*">
-  <button id="hostButton">Host Flag</button>
-  <div id="flagContainer"></div>
-
-  <script>
-    const flagInput = document.getElementById('flagInput');
-    const hostButton = document.getElementById('hostButton');
-    const flagContainer = document.getElementById('flagContainer');
-
-    hostButton.addEventListener('click', () => {
-      const file = flagInput.files[0];
-      
-      if (file) {
-        const imageUrl = URL.createObjectURL(file);
-        const flagImage = document.createElement('img');
-        flagImage.src = imageUrl;
-        
-        flagContainer.innerHTML = ''; // Clear previous image
-        flagContainer.appendChild(flagImage);
-        
-        // Optionally, you can also send the image to a server for hosting.
-        // This is just a client-side example.
-      }
-    });
-  </script>
+  <div id="flag">
+    <div class="stripe"></div>
+    <div class="stripe"></div>
+    <div class="stripe"></div>
+  </div>
 </body>
 </html>
